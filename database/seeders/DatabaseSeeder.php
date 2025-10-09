@@ -15,20 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            CatalogSeeder::class,
-            LocationSeeder::class,
-            InstitutionSeeder::class,
-            CallSeeder::class,
-            KnowledgeAreaSeeder::class,
+          
             UserSeeder::class,
             ModuleSeeder::class,
             PermissionSeeder::class,
             AdminSeeder::class,
-            PaymentVoucherSeeder::class,
-            ArticleTypeSeeder::class,
-            RubricsSeeder::class,
-            RubricsItemsSeeder::class,
-            RubricsAnswersSeeder::class,
+           
         ]);
     }
 }

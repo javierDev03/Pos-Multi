@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\Agency;
 use App\Models\File;
 use App\Models\User;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,18 +12,19 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
-use Mockery\CountValidator\AtMost;
 
 class ProfileController extends Controller
 {
     private string $storage_path = 'photos';
+
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): Response
     {
+        // Solo pasamos al front los datos mínimos, sin relaciones inexistentes
         return Inertia::render('Profile/Edit', [
-            'user' => User::with('roles', 'file', 'institution')->findOrFail(Auth::id())
+            'user' => User::with('file')->findOrFail(Auth::id())
         ]);
     }
 
@@ -38,14 +37,15 @@ class ProfileController extends Controller
         $user->update($request->validated());
 
         if ($request->hasFile('photo')) {
+            $fileStorage = $request->file('photo');
+            $fileName = (File::max('id') + 1) . '-' . $fileStorage->getClientOriginalName();
+            $path = '/storage/' . $fileStorage->storeAs($this->storage_path, $fileName, 'public');
+
             $file = File::where([
                 ['fileable_type', User::class],
                 ['fileable_id', $user->id]
             ])->first();
 
-            $fileStorage = $request->file('photo');
-            $fileName = (File::max('id') + 1) . '-' . $fileStorage->getClientOriginalName();
-            $path = '/storage/' . $fileStorage->storeAs($this->storage_path, $fileName, 'public');
             if ($file) {
                 Storage::disk('public')->delete($file->path);
                 $file->update([
@@ -63,6 +63,7 @@ class ProfileController extends Controller
                 ]);
             }
         }
+
         return Redirect::route('profile.edit')->with('success', 'Perfil actualizado con éxito');
     }
 
@@ -87,7 +88,10 @@ class ProfileController extends Controller
         return redirect()->route('login');
     }
 
-    public function destroyPhoto()
+    /**
+     * Delete user's profile photo.
+     */
+    public function destroyPhoto(): RedirectResponse
     {
         $user = User::with('file')->findOrFail(Auth::id());
 
@@ -96,6 +100,6 @@ class ProfileController extends Controller
             $user->file->delete();
         }
 
-        return Redirect::route('profile.edit')->with('success', 'Perfil actualizado con éxito');
+        return Redirect::route('profile.edit')->with('success', 'Foto eliminada con éxito');
     }
 }

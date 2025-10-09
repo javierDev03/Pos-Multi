@@ -34,8 +34,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'knowledge_area_id',
-        'institution_id'
     ];
 
     /**
@@ -98,46 +96,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return false;
     }
 
-    public function knowledgeArea()
-    {
-        return $this->belongsTo(KnowledgeArea::class, 'knowledge_area_id');
-    }
-    public function mainArea()
-    {
-        return $this->knowledgeArea?->parent ?? $this->knowledgeArea; // esto te da el área principal si el user está en subárea
-    }
-   public function subArea()
-{
-    return $this->knowledgeArea?->parent ? $this->knowledgeArea : null;
-}
-    public function institution()
-    {
-        return $this->belongsTo(Institution::class);
-    }
+    
 
     public function file()
     {
         return $this->morphOne(File::class, 'fileable');
     }
 
-    public function paymentVoucher()
-    {
-        return $this->hasMany(PaymentVoucher::class);
-    }
-
-    public function articles()
-    {
-        return $this->hasMany(Article::class, 'postulant_id');
-    }
-    // Un revisor (usuario) puede tener muchas evaluaciones
-    public function evaluations()
-    {
-        return $this->hasMany(ArticleEvaluation::class, 'user_id');
-    }
-
-    public function articleReviews()
-{
-    return $this->hasMany(ArticleReview::class, 'reviewer_id');
-}
-
+    
 }
