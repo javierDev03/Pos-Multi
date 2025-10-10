@@ -26,8 +26,7 @@ class RegisterRequest extends FormRequest
             'name'              => 'required|string|max:255',
             'email'             => 'required|string|email|max:255|unique:users',
             'password'          => ['required', 'confirmed', Password::defaults()],
-            'knowledge_area_id' => 'required|exists:knowledge_areas,id',
-            'institution_id'    => 'required|exists:institutions,id'
+           
         ];
     }
 
@@ -37,8 +36,7 @@ class RegisterRequest extends FormRequest
             'name'              => 'nombre',
             'email'             => 'correo electrónico',
             'password'          => 'contraseña',
-            'knowledge_area_id' => 'área de conocimiento',
-            'institution_id'    => 'institución'
+         
         ];
     }
 }

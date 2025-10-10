@@ -27,8 +27,7 @@ class StoreUserRequest extends FormRequest
             'email'             => 'required|email|max:255|unique:users',
             'password'          => 'required|max:20',
             'roles'             => 'nullable|array',
-            'knowledge_area_id' => 'nullable|exists:knowledge_areas,id',
-            'institution_id'    => 'nullable|exists:institutions,id',
+         
         ];
     }
     public function attributes(): array
@@ -38,8 +37,7 @@ class StoreUserRequest extends FormRequest
             'email'             => 'correo electrónico',
             'password'          => 'contraseña',
             'roles.*'           => 'roles',
-            'knowledge_area_id' => 'area',
-            'institution_id'    => 'institución',
+           
         ];
     }
 }
