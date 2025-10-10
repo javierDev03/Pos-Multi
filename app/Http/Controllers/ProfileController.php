@@ -25,7 +25,7 @@ class ProfileController extends Controller
     public function edit(Request $request): Response
     {
         return Inertia::render('Profile/Edit', [
-            'user' => User::with('roles', 'file', 'institution')->findOrFail(Auth::id())
+            'user' => User::with('roles', 'file')->findOrFail(Auth::id())
         ]);
     }
 

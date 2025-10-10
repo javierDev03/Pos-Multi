@@ -39,9 +39,8 @@
             </div>
             <div class="mt-8 md:order-1 md:mt-0 ">
                 <div class="justify-center flex items-center space-x-1">
-                    <img src="/img/tecnm_white.png" alt="" class="w-8">
                     <p class="text-center text-base text-white">
-                        &copy; CITCA
+                        &copy; Pos
                     </p>
                 </div>
             </div>

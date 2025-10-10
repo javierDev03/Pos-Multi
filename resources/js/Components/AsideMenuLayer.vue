@@ -42,7 +42,6 @@ const asideLgCloseClick = (event) => {
                 class="flex flex-row h-14 items-center justify-between dark:bg-slate-900">
                 <div class="justify-center flex w-full p-2">
                     <div>
-                        <img class="rounded-xl" src="/img/tecnm_white.png" width="35" alt="">
                     </div>
                 </div>
                 <button class="hidden lg:inline-block xl:hidden p-3" @click.prevent="asideLgCloseClick">

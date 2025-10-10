@@ -16,7 +16,6 @@ const props = defineProps({
     title: { type: String, required: true },
     routeName: { type: String, required: true },
     roles: { type: Object, required: true },
-    areas: { type: Object, required: true },
 });
 
 const form = useForm({
@@ -25,9 +24,7 @@ const form = useForm({
     email: null,
     password: null,
     roles: [],
-    knowledge_area_id: null,
-    institution_id: null,
-    selectedArea: null
+
 });
 
 const saveForm = () => {
