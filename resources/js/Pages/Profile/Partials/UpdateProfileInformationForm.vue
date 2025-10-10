@@ -97,9 +97,7 @@ const deletePhoto = () => {
                     <FormField label="Correo Electrónico:" :error="form.errors.email">
                         <FormControl v-model="form.email" :icon="mdiEmail" placeholder="Correo Electrónico" disabled />
                     </FormField>
-                    <FormField label="Institución:" :error="form.errors.institution_id">
-                        <FormControl v-model="form.institution" :icon="mdiDomain" placeholder="Institución de procedencia" disabled />
-                    </FormField>
+                    
                 </div>
             </div>
             <div class="md:flex md:space-x-4">

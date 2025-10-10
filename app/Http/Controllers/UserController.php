@@ -108,7 +108,6 @@ class UserController extends Controller
             'title'         => 'Agregar Usuarios',
             'routeName'     => $this->routeName,
             'roles'         => Role::orderBy('name')->select('id', 'name', 'description')->get(),
-            'areas'         => KnowledgeArea::orderBy('name')->get(),
         ]);
     }
 
@@ -122,8 +121,6 @@ class UserController extends Controller
                 'name'              => $request->name,
                 'email'             => $request->email,
                 'password'          => $request->password,
-                'knowledge_area_id' => $request->knowledge_area_id,
-                'institution_id'    => $request->institution_id,
             ]);
             $user->syncRoles($request->roles);
 
@@ -153,9 +150,8 @@ class UserController extends Controller
         return Inertia::render("{$this->source}Edit", [
             'title'         => 'Editar Usuarios.',
             'routeName'     => $this->routeName,
-            'user'          => $user->load('roles:id,name', 'knowledgeArea', 'institution:id,name'),
+            'user'          => $user->load('roles:id,name',),
             'roles'         => Role::orderBy('name')->select('id', 'name', 'description')->get(),
-            'areas'         => KnowledgeArea::orderBy('name')->get(),
         ]);
     }
 
@@ -170,16 +166,14 @@ class UserController extends Controller
                 $user->update([
                     'name' => $fields['name'],
                     'email' => $fields['email'],
-                    'knowledge_area_id' => $fields['knowledge_area_id'],
-                    'institution_id' => $fields['institution_id'],
+                   
                 ]);
             } else {
                 $user->update([
                     'name' => $fields['name'],
                     'email' => $fields['email'],
                     'password' => $fields['password'],
-                    'knowledge_area_id' => $fields['knowledge_area_id'],
-                    'institution_id' => $fields['institution_id'],
+                   
                 ]);
             }
             $user->syncRoles($fields['roles']);

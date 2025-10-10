@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Inertia::share([
-            'articleTypes' => fn() => ArticleType::select('id', 'name')->get(),
         ]);
     }
 }
