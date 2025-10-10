@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name'              => 'Administrador',
-                'email'             => 'vitervo.lc@cenidet.tecnm.mx',
+                'email'             => 'test@gmail.com',
                 'password'          => Hash::make('Password'),
                  'knowledge_area_id'    => 1,
                 'institution_id'    => 1723,
@@ -28,8 +28,8 @@ class UserSeeder extends Seeder
             ],
             [
                 'name'              => 'Administrador',
-                'email'             => 'manuel.am@cenidet.tecnm.mx',
-                'password'          => Hash::make('citca2025admin'),
+                'email'             => 'jav@gmail.com',
+                'password'          => Hash::make('Password'),
                  'knowledge_area_id'    => 2,
                 'institution_id'    => 1723,
                 'email_verified_at' => now(),
