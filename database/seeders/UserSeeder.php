@@ -19,15 +19,15 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name'              => 'Administrador',
-                'email'             => 'vitervo.lc@cenidet.tecnm.mx',
+                'email'             => 'test@gmail.com',
                 'password'          => Hash::make('Password'),
                 'email_verified_at' => now(),
                 'created_at'        => now(),
             ],
             [
                 'name'              => 'Administrador',
-                'email'             => 'manuel.am@cenidet.tecnm.mx',
-                'password'          => Hash::make('citca2025admin'),
+                'email'             => 'Jav@gmail.com',
+                'password'          => Hash::make('Password'),
                 'email_verified_at' => now(),
                 'created_at'        => now(),
             ],
