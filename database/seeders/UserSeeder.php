@@ -26,7 +26,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'name'              => 'Administrador',
-
                 'email'             => 'Jav@gmail.com',
                 'password'          => Hash::make('Password'),
                 'email_verified_at' => now(),
