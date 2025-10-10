@@ -1,0 +1,1 @@
+import{b as t,a as s}from"./SectionTitleLineWithButton-PkwI0osh.js";import{o,h as r,d as a,b as _,A as n}from"./app-DdNFHAqW.js";const m={__name:"LayoutMain",setup(l){return(e,c)=>(o(),r(s,null,{default:a(()=>[_(t,null,{default:a(()=>[n(e.$slots,"default")]),_:3})]),_:3}))}};export{m as _};
