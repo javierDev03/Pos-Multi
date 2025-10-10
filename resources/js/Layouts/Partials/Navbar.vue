@@ -31,8 +31,7 @@ const toggleNav = () => {
                 <Link href="/"
                     class="text-xl font-bold text-blue-600 dark:text-gray-100 md:text-2xl hover:text-blue-500">
                     <div class="justify-normal flex items-center space-x-1">
-                        <img :src="isDarkMode ? '/img/tecnm_white.png' : '/img/tecnm_blue.png'" alt="" class="w-8">
-                        <p>CITCA</p>
+                        <p>Pos</p>
                     </div>
                 </Link>
 
