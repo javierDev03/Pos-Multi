@@ -38,10 +38,19 @@ class UserSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+        $user3 = User::firstOrCreate(
+            ['email' => 'test@gmail.com'],
+            [
+                'name' => 'Administrador',
+                'password' => Hash::make('Password'),
+                'email_verified_at' => now(),
+            ]
+        );
 
         // 3️⃣ Asignar roles a los usuarios
         $user1->syncRoles([$admin]);
         $user2->syncRoles([$admin]);
+        $user3->syncRoles([$admin]);
 
         // 4️⃣ (Opcional) Si quieres que admin tenga todos los permisos
         $permissions = Permission::all();
